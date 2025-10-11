@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يحيى باقش - مصمم جرافيك ومطور ويب وFlutter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* التهيئة العامة */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+         :root {
+            --primary-color: #2563eb;
+            --secondary-color: #7c3aed;
+            --accent-color: #06b6d4;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+            color: var(--light-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        /* الشريط العلوي */
+        
+        header {
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light-color);
+        }
+        /* قسم البطل */
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-text .name {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-text .title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            margin-right: 15px;
+        }
+        
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .avatar-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 5px solid rgba(37, 99, 235, 0.2);
+            transition: var(--transition);
+        }
+        
+        .avatar-container:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-color);
+        }
+        
+        .avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .specialization {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .specialization-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+        
+        .specialization-tag.flutter {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent-color);
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+        }
+        
+        .contact-info div {
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 60%;
+            left: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+        /* الأقسام العامة */
+        
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+        }
+        
+        .section-title p {
+            color: #aaa;
+            max-width: 600px;
+            margin: 20px auto 0;
+        }
+        /* قسم المهارات */
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-category:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+        }
+        
+        .skill-category.flutter:before {
+            background: linear-gradient(to bottom, var(--accent-color), var(--secondary-color));
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 20px;
+            color: var(--light-color);
+            font-size: 1.5rem;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-name {
+            font-weight: 500;
+        }
+        
+        .skill-level {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .skill-item.flutter .skill-level {
+            color: var(--accent-color);
+        }
+        /* قسم المشاريع */
+        
+        .projects {
+            background: rgba(15, 23, 42, 0.5);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+        }
+        
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+        
+        .project-card.flutter .project-badge {
+            background: var(--accent-color);
+        }
+        
+        .project-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-img:before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 15px;
+            color: var(--light-color);
+        }
+        
+        .project-content p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 8px;
+        }
+        
+        .tech-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .tech-tag.flutter {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent-color);
+        }
+        
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .project-link:hover {
+            color: var(--accent-color);
+            transform: translateX(-5px);
+        }
+        /* قسم الخبرة */
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            top: 0;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+        }
+        
+        .experience-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .experience-item:nth-child(odd) {
+            right: 0;
+        }
+        
+        .experience-item:nth-child(even) {
+            right: 50%;
+        }
+        
+        .experience-content {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            position: relative;
+        }
+        
+        .experience-content:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            top: 25px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+        }
+        
+        .experience-item:nth-child(odd) .experience-content:after {
+            left: -10px;
+        }
+        
+        .experience-item:nth-child(even) .experience-content:after {
+            right: -10px;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .experience-title {
+            color: var(--light-color);
+            margin-bottom: 5px;
+        }
+        
+        .experience-title.flutter {
+            color: var(--accent-color);
+        }
+        
+        .experience-date {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .experience-location {
+            color: #aaa;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .experience-list {
+            list-style-type: none;
+        }
+        
+        .experience-list li {
+            margin-bottom: 10px;
+            padding-right: 15px;
+            position: relative;
+        }
+        
+        .experience-list li:before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            right: 0;
+        }
+        /* قسم التعليم */
+        
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .education-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        .education-title {
+            color: var(--light-color);
+            margin-bottom: 10px;
+        }
+        
+        .education-institution {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .education-date {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        /* قسم اللغات */
+        
+        .languages {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .language-item {
+            text-align: center;
+        }
+        
+        .language-name {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--light-color);
+        }
+        
+        .language-level {
+            color: var(--primary-color);
+        }
+        /* قسم التعلم المستمر */
+        
+        .learning {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .learning-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .learning-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .learning-item {
+            padding: 10px 15px;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 8px;
+            border-right: 3px solid var(--primary-color);
+        }
+        /* التذييل */
+        
+        footer {
+            background-color: rgba(15, 23, 42, 0.9);
+            color: var(--light-color);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(37, 99, 235, 0.2);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-link {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .contact-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .contact-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        /* التجاوب مع الشاشات المختلفة */
+        
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            .timeline:before {
+                right: 31px;
+            }
+            .experience-item {
+                width: 100%;
+                padding-right: 70px;
+                padding-left: 25px;
+            }
+            .experience-item:nth-child(even) {
+                right: 0;
+            }
+            .experience-item:nth-child(odd) .experience-content:after,
+            .experience-item:nth-child(even) .experience-content:after {
+                left: -10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 20px;
+                text-align: right;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            .avatar-container {
+                width: 250px;
+                height: 250px;
+            }
+        }
+        /* الرسوم المتحركة */
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+        /* شريط التمرير المخصص */
+        
+         ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-color), var(--accent-color));
+            border-radius: 5px;
+        }
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--accent-color), var(--primary-color));
+        }
+    </style>
+</head>
+
+<body>
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>يحيى باقش</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#skills">المهارات</a></li>
+                    <li><a href="#projects">المشاريع</a></li>
+                    <li><a href="#experience">الخبرة</a></li>
+                    <li><a href="#education">التعليم</a></li>
+                    <li><a href="#contact">اتصل بي</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- قسم البطل -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="title">مرحباً، أنا</span>
+                    <h1><span class="name">يحيى باقش</span></h1>
+                    <h2 class="title">مصمم جرافيك احترافي ومطور ويب وFlutter</h2>
+
+                    <div class="specialization">
+                        <span class="specialization-tag">مصمم جرافيك احترافي</span>
+                        <span class="specialization-tag">مطور ويب احترافي</span>
+                        <span class="specialization-tag flutter">مطور Flutter احترافي</span>
+                    </div>
+
+                    <p>مصمم جرافيك احترافي ومطور ويب وFlutter يتمتع بمزيج استثنائي من الإبداع البصري والبرمجة الوظيفية المتقدمة. متخصص في صياغة هويات العلامات التجارية الاحترافية وتطوير تطبيقات الويب والتطبيقات المحمولة باستخدام أحدث التقنيات.</p>
+
+                    <div class="contact-info">
+                        <div>اليمن – صنعاء – بني الحارث – جدر</div>
+                        <div>هاتف: +967771807813</div>
+                        <div>بريد إلكتروني: yahya2020baqsh@gmail.com</div>
+                    </div>
+
+                    <div class="btn-container" style="margin-top: 30px;">
+                        <a href="#projects" class="btn btn-outline">مشاريعي</a>
+                        <a href="#contact" class="btn">تواصل معي</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="avatar-container">
+                        <img src="5.jpg" alt="يحيى باقش — مصمم جرافيك ومطور ويب وFlutter احترافي" class="avatar" loading="lazy" />
+                    </div>
+                    <div class="floating-elements">
+                        <div class="floating-element"><i class="fab fa-js"></i></div>
+                        <div class="floating-element"><i class="fab fa-flutter"></i></div>
+                        <div class="floating-element"><i class="fas fa-paint-brush"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الملف الشخصي -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>الملف الشخصي</h2>
+            </div>
+            <div class="learning">
+                <p class="summary" style="text-align: center; line-height: 1.8;">
+                    مصمم جرافيك احترافي ومطور ويب وFlutter يتمتع بمزيج استثنائي من الإبداع البصري والبرمجة الوظيفية المتقدمة. متخصص في صياغة هويات العلامات التجارية الاحترافية وتطوير تطبيقات الويب والتطبيقات المحمولة باستخدام أحدث التقنيات. أمتلك خبرة في تصميم واجهات المستخدم
+                    وتجربة المستخدم (UI/UX) وتحويل التصاميم إلى تطبيقات ويب وتطبيقات Flutter وظيفية وعالية الأداء. أعمل باستمرار على تحسين مهاراتي والبقاء على اطلاع بأحدث تقنيات التصميم والتطوير لتقديم حلول رقمية متكاملة تلبي احتياجات العملاء وتحقق أهدافهم.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المهارات -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>المهارات الاحترافية</h2>
+                <p>مجموعة المهارات والتقنيات التي أتقنها</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>تصميم الجرافيك الاحترافي</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-name">Adobe Photoshop</div>
+                            <div class="skill-level">احترافي</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Adobe Illustrator</div>
+                            <div class="skill-level">احترافي</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Adobe XD</div>
+                            <div class="skill-level">متقدم</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Figma</div>
+                            <div class="skill-level">متقدم</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">هوية العلامة التجارية</div>
+                            <div class="skill-level">احترافي</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">تصميم الطباعة</div>
+                            <div class="skill-level">متقدم</div>
+                        </div>
+                    </div>
+                </div>
+<!-- داخل قسم المهارات (skills-container) -->
+<div class="skill-category">
+    <h3>تحليل البيانات والحوسبة العلمية</h3>
+    <div class="skills-list">
+        <div class="skill-item">
+            <div class="skill-name">Python</div>
+            <div class="skill-level">احترافي</div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">NumPy</div>
+            <div class="skill-level">متقدم</div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">Pandas</div>
+            <div class="skill-level">متقدم</div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">Matplotlib / Seaborn</div>
+            <div class="skill-level">متقدم</div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">Jupyter Notebooks</div>
+            <div class="skill-level">متقدم</div>
+        </div>
+    </div>
+</div>
+
+<div class="skill-category">
+    <h3>أدوات إدارة المشاريع والتطوير</h3>
+    <div class="skills-list">
+        <div class="skill-item">
+            <div class="skill-name">Git & GitHub</div>
+            <div class="skill-level">احترافي</div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">Version Control</div>
+            <div class="skill-level">احترافي</div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">Collaboration Tools</div>
+            <div class="skill-level">متقدم</div>
+        </div>
+    </div>
+</div>
+                <div class="skill-category">
+                    <h3>تطوير الويب الاحترافي</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-name">HTML5</div>
+                            <div class="skill-level">احترافي</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">CSS3</div>
+                            <div class="skill-level">احترافي</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">JavaScript</div>
+                            <div class="skill-level">متقدم</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">React</div>
+                            <div class="skill-level">متوسط</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Node.js</div>
+                            <div class="skill-level">متوسط</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">RESTful APIs</div>
+                            <div class="skill-level">متوسط</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category flutter">
+                    <h3>تطوير Flutter الاحترافي</h3>
+                    <div class="skills-list">
+                        <div class="skill-item flutter">
+                            <div class="skill-name">Flutter</div>
+                            <div class="skill-level">احترافي</div>
+                        </div>
+                        <div class="skill-item flutter">
+                            <div class="skill-name">Dart</div>
+                            <div class="skill-level">احترافي</div>
+                        </div>
+                        <div class="skill-item flutter">
+                            <div class="skill-name">State Management</div>
+                            <div class="skill-level">متقدم</div>
+                        </div>
+                        <div class="skill-item flutter">
+                            <div class="skill-name">Firebase Integration</div>
+                            <div class="skill-level">متقدم</div>
+                        </div>
+                        <div class="skill-item flutter">
+                            <div class="skill-name">API Integration</div>
+                            <div class="skill-level">متوسط</div>
+                        </div>
+                        <div class="skill-item flutter">
+                            <div class="skill-name">UI/UX في Flutter</div>
+                            <div class="skill-level">احترافي</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المشاريع -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>المشاريع البارزة</h2>
+                <p>أبرز المشاريع التي عملت عليها مؤخراً</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card flutter">
+                    <span class="project-badge">Flutter</span>
+                    <div class="project-img">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">تطبيق إدارة المهام - إصدار Flutter</h3>
+                        <p class="project-description">تطبيق محمول احترافي لإدارة المهام والمشاريع الشخصية، يتميز بواجهة مستخدم حديثة وأداء عالي وميزات متقدمة مثل المزامنة السحابية والإشعارات.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag flutter">Flutter</span>
+                            <span class="tech-tag flutter">Dart</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Provider</span>
+                        </div>
+                        <a href="https://github.com/yahyabakash/taskflow" class="project-link">عرض المشروع →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-badge">Web</span>
+                    <div class="project-img">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">موقع العلامة التجارية</h3>
+                        <p class="project-description">موقع ويب احترافي لشركة ناشئة، يشمل تصميم الهوية البصرية الكاملة وتطوير الموقع باستخدام تقنيات الويب الحديثة مع تحسين الأداء وتجربة المستخدم.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">React</span>
+                        </div>
+                        <a href="https://github.com/yahyabakash/portfolio-designs" class="project-link">عرض المشروع →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-badge">Design</span>
+                    <div class="project-img">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">هوية العلامة التجارية</h3>
+                        <p class="project-description">تصميم هوية بصرية متكاملة لشركة تقنية ناشئة، تشمل الشعار، نظام الألوان، الطباعة، والمواد التسويقية، مما أدى إلى زيادة الوعي بالعلامة التجارية بنسبة 30%.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Adobe Illustrator</span>
+                            <span class="tech-tag">Adobe Photoshop</span>
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">Branding</span>
+                        </div>
+                        <a href="https://github.com/yahyabakash/portfolio-designs" class="project-link">عرض المشروع →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخبرة -->
+    <section class="section" id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>الخبرة المهنية</h2>
+                <p>رحلة تطوري المهني في مجال التصميم والتطوير</p>
+            </div>
+            <div class="timeline">
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <h3 class="experience-title flutter">مطور Flutter ومصمم جرافيك احترافي</h3>
+                            <span class="experience-date">2024 - حتى الآن</span>
+                        </div>
+                        <div class="experience-location">اليمن – صنعاء – بني الحارث – جدر</div>
+                        <ul class="experience-list">
+                            <li>تصميم وتطوير تطبيقات محمولة احترافية باستخدام Flutter، مع التركيز على الأداء العالي وتجربة المستخدم السلسة.</li>
+                            <li>تصميم هويات علامات تجارية شاملة واحترافية باستخدام Adobe Illustrator وPhotoshop للشركات الناشئة والمؤسسات، مما أدى إلى زيادة الوعي بالعلامة التجارية بنسبة 25%.</li>
+                            <li>تطوير تطبيقات ويب متكاملة باستخدام HTML وCSS وJavaScript وإطارات عمل حديثة، مع تحسين محركات البحث (SEO) والأداء.</li>
+                            <li>إنشاء تصاميم واجهات مستخدم تفاعلية باستخدام Figma وAdobe XD، مما أدى إلى زيادة معدلات التحويل بنسبة 20% لحملات التسويق المستهدفة.</li>
+                            <li>التعاون مع فرق متعددة التخصصات لتحسين تجربة المستخدم من خلال حلول بصرية وتقنية مبتكرة ومتكاملة.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <h3 class="experience-title">مشروع شخصي - تطبيق إدارة المهام</h3>
+                            <span class="experience-date">2023</span>
+                        </div>
+                        <ul class="experience-list">
+                            <li>تطوير وتصميم تطبيق ويب وإصدار Flutter لإدارة المهام باستخدام أحدث التقنيات، مما أدى إلى تحسين الإنتاجية الشخصية بنسبة 45%.</li>
+                            <li>تصميم واجهة مستخدم بسيطة وجذابة باستخدام Figma، مع تجربة مستخدم ممتازة، وجذب أكثر من 150 مستخدم نشط.</li>
+                            <li>تطبيق مبادئ UX/UI المتقدمة واستخدام أنماط التصميم الحديثة (Material Design) لتعزيز تفاعل المستخدم مع التطبيق.</li>
+                            <li>تنفيذ ميزات متقدمة مثل المزامنة السحابية والإشعارات والتكامل مع التقويم.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التعليم -->
+    <section class="section" id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>التعليم والشهادات</h2>
+                <p>المؤهلات الأكاديمية والدورات التدريبية</p>
+            </div>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3 class="education-title">بكالوريوس في تكنولوجيا المعلومات</h3>
+                    <div class="education-institution">كلية الهندسة - جامعة الحكمة</div>
+                    <div class="education-date">2023/2024</div>
+                </div>
+<!-- داخل قسم التعليم (education-grid) --><!-- داخل قسم التعليم (education-grid) -->
+<div class="education-card">
+    <h3 class="education-title">Introduction to Virtual, Augmented and Mixed Reality</h3>
+    <div class="education-institution">Lancaster University & Institute of Coding</div>
+    <div class="education-date">16 نوفمبر 2022</div>
+</div>
+<div class="education-card">
+    <h3 class="education-title">CS105: Introduction to Python</h3>
+    <div class="education-institution">Saylor Academy</div>
+    <div class="education-date">28 سبتمبر 2025</div>
+</div>
+<div class="education-card">
+    <h3 class="education-title">Scientific Computing with Python</h3>
+    <div class="education-institution">freeCodeCamp</div>
+    <div class="education-date">24 سبتمبر 2025</div>
+</div>
+<div class="education-card">
+    <h3 class="education-title">Data Analysis with Python</h3>
+    <div class="education-institution">freeCodeCamp</div>
+    <div class="education-date">24 سبتمبر 2025</div>
+</div>
+<div class="education-card">
+    <h3 class="education-title">Responsive Web Design</h3>
+    <div class="education-institution">freeCodeCamp</div>
+    <div class="education-date">16 يوليو 2024</div>
+</div>
+<div class="education-card">
+    <h3 class="education-title">GitHub Basics</h3>
+    <div class="education-institution">دورة عبر الإنترنت</div>
+    <div class="education-date">2025</div>
+</div>
+                <div class="education-card">
+                    <h3 class="education-title">شهادة متقدمة في Flutter</h3>
+                    <div class="education-institution">Udemy - دورة Flutter & Dart - The Complete Guide</div>
+                    <div class="education-date">2024</div>
+                </div>
+
+                <div class="education-card">
+                    <h3 class="education-title">دبلوم ICDL</h3>
+                    <div class="education-institution">المعهد العام للاتصالات</div>
+                    <div class="education-date">2019/12/7 - 2020/2/16</div>
+                </div>
+
+                <div class="education-card">
+                    <h3 class="education-title">مهارات رقمية: الذكاء الاصطناعي</h3>
+                    <div class="education-institution">منصة FutureLearn</div>
+                    <div class="education-date">2022/11/16</div>
+                </div>
+
+                <div class="education-card">
+                    <h3 class="education-title">دورة متقدمة في JavaScript</h3>
+                    <div class="education-institution">Udemy</div>
+                    <div class="education-date">2023</div>
+                </div>
+
+                <div class="education-card">
+                    <h3 class="education-title">شهادة الثانوية العامة</h3>
+                    <div class="education-institution">مدرسة سبأ بني العسكري</div>
+                    <div class="education-date">2018/2019</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم اللغات -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>اللغات</h2>
+            </div>
+            <div class="languages">
+                <div class="language-item">
+                    <div class="language-name">العربية</div>
+                    <div class="language-level">لغة الأم (بطلاقة)</div>
+                </div>
+
+                <div class="language-item">
+                    <div class="language-name">الإنجليزية</div>
+                    <div class="language-level">مستوى B1 (متوسط)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التعلم المستمر -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>التعلم المستمر</h2>
+            </div>
+            <div class="learning">
+                <h3 class="learning-title">🎯 أعمل حالياً على</h3>
+                <div class="learning-items">
+                    <div class="learning-item">دورة متقدمة في Flutter: بناء تطبيقات تجارية احترافية</div>
+                    <div class="learning-item">تعلم React.js وNext.js لتطوير تطبيقات ويب حديثة</div>
+                    <div class="learning-item">دورة في Firebase لتكامل قواعد البيانات والمصادقة في تطبيقات Flutter وWeb</div>
+                    <div class="learning-item">تحسين مهاراتي في التصميم UI/UX لتطبيقات الهاتف المحمول</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 يحيى باقش — مصمم جرافيك احترافي ومطور ويب وFlutter</p>
+                <div class="contact-links">
+                    <a href="mailto:yahya2020baqsh@gmail.com" class="contact-link" aria-label="إرسال بريد إلكتروني">✉️ البريد الإلكتروني</a>
+                    <a href="https://github.com/yahyabakash" target="_blank" class="contact-link" aria-label="زيارة GitHub">🐙 GitHub</a>
+                    <a href="https://wa.me/967771807813" class="contact-link" aria-label="الاتصال بي على واتساب">📱 واتساب</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>تم التصميم والتطوير بأحدث تقنيات الويب</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تفعيل القائمة المتنقلة
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // إغلاق القائمة عند النقر على رابط
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // تأثير التمرير السلس للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // تأثير الظل للشريط العلوي عند التمرير
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(37, 99, 235, 0.2)';
+                header.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
+            } else {
+                header.style.boxShadow = '0 4px 6px rgba(37, 99, 235, 0.1)';
+                header.style.backgroundColor = 'rgba(15, 23, 42, 0.9)';
+            }
+        });
+
+        // تأثير عشوائي للعناصر العائمة
+        const floatingElements = document.querySelectorAll('.floating-element');
+
+        floatingElements.forEach((element, index) => {
+            // تعيين تأخير عشوائي لكل عنصر
+            element.style.animationDelay = `${index * 2}s`;
+        });
+    </script>
+</body>
+
+</html>
